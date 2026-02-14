@@ -1,1 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulp & Grain | Handcrafted Paper & Wood Art</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #8b7355 0%, #6b5847 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.7;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 60px;
+            height: 90vh;
+            background: linear-gradient(rgba(139, 115, 85, 0.7), rgba(107, 88, 71, 0.7)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23d4a574" width="1200" height="600"/><path fill="%23c9956a" d="M0 300 Q300 200 600 300 T1200 300 V600 H0 Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .cta-button {
+            background: white;
+            color: #6b5847;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: #6b5847;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #d4a574 0%, #c9956a 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: #f9f6f2;
+            padding: 5rem 2rem;
+        }
+
+        .gallery h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #6b5847;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #d4a574 0%, #c9956a 50%, #8b7355 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .gallery-info {
+            padding: 1.5rem;
+        }
+
+        .gallery-info h3 {
+            color: #6b5847;
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-info p {
+            color: #666;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #6b5847;
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            text-align: center;
+            padding: 2rem;
+            border: 2px solid #d4a574;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            background: #f9f6f2;
+            border-color: #8b7355;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: #6b5847;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #8b7355 0%, #6b5847 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">PULP & GRAIN</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Handcrafted Artistry</h1>
+            <p>Where Paper Meets Wood in Perfect Harmony</p>
+            <a href="#gallery" class="cta-button">Explore Our Work</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="about-text">
+            <h2>Our Story</h2>
+            <p>At Pulp & Grain, we believe in the timeless beauty of natural materials. Each piece we create tells a story, combining the delicate intricacy of paper art with the organic warmth of hand-selected wood.</p>
+            <p>Our artisans bring years of experience and boundless creativity to every project, whether it's a custom wall installation, a one-of-a-kind gift, or a collaborative piece for your space.</p>
+            <p>We source sustainable materials and use traditional techniques merged with contemporary design to create art that connects people with nature.</p>
+        </div>
+        <div class="about-image">
+            🎨
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery">
+        <h2>Featured Works</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div class="gallery-image">🌿</div>
+                <div class="gallery-info">
+                    <h3>Botanical Series</h3>
+                    <p>Delicate paper cuts on reclaimed wood, celebrating nature's beauty in intricate detail.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-image">🏔️</div>
+                <div class="gallery-info">
+                    <h3>Mountain Landscapes</h3>
+                    <p>Layered paper and wood creating depth and dimension in stunning topographic designs.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-image">🦋</div>
+                <div class="gallery-info">
+                    <h3>Wildlife Collection</h3>
+                    <p>Celebrating the animal kingdom through paper sculpture and wood carving techniques.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-image">🌊</div>
+                <div class="gallery-info">
+                    <h3>Ocean Waves</h3>
+                    <p>Flowing forms that capture the movement and energy of the sea in mixed media.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-image">🏛️</div>
+                <div class="gallery-info">
+                    <h3>Architectural Art</h3>
+                    <p>Geometric precision meets organic materials in our urban-inspired collection.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-image">✨</div>
+                <div class="gallery-info">
+                    <h3>Custom Commissions</h3>
+                    <p>Personalized pieces designed in collaboration with you to bring your vision to life.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <h2>What We Offer</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Custom Art Pieces</h3>
+                <p>Bespoke creations tailored to your vision and space</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🏠</div>
+                <h3>Interior Design</h3>
+                <p>Collaborative installations for homes and businesses</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎁</div>
+                <h3>Gift Collections</h3>
+                <p>Unique handcrafted pieces perfect for special occasions</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎓</div>
+                <h3>Workshops</h3>
+                <p>Learn the art of paper and wood crafting in our studio</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Get In Touch</h2>
+        <p>Ready to commission a piece or learn more about our work?</p>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i>📧</i>
+                <span>hello@pulpandgrain.com</span>
+            </div>
+            <div class="contact-item">
+                <i>📱</i>
+                <span>(555) 123-4567</span>
+            </div>
+            <div class="contact-item">
+                <i>📍</i>
+                <span>123 Artisan Lane, Studio City</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Pulp & Grain. All rights reserved. | Handcrafted with ❤️</p>
+    </footer>
+</body>
+</html>
 
